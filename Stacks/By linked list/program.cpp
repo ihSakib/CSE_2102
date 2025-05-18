@@ -36,41 +36,32 @@ public:
       return;
     }
 
-    Node *temp = head;
-
-    while (temp->next != NULL)
-    {
-      temp = temp->next;
-    }
-
-    temp->next = nn;
+    nn->next = head;
+    head = nn;
   }
 
   int pop()
   {
-    if (head == NULL)
+    if (isEmpty())
     {
       cout << "\033[31mStacks is empty!\033[0m" << endl;
       return -1;
     }
 
-    if (head->next == NULL)
-    {
-      Node *popped = head;
-      head = NULL;
-      return popped->data;
-    }
-
-    Node *temp = head;
-    while (temp->next->next != NULL)
-    {
-      temp = temp->next;
-    }
-
-    Node *popped = temp->next;
-    temp->next = NULL;
+    Node *popped = head;
+    head = head->next;
 
     return popped->data;
+  }
+
+  int peek()
+  {
+    return head->data;
+  }
+
+  bool isEmpty()
+  {
+    return head == NULL;
   }
 };
 
@@ -83,19 +74,8 @@ int main()
   s.push(30);
 
   cout << s.pop() << endl;
-  cout << s.pop() << endl;
-  cout << s.pop() << endl;
-  cout << s.pop() << endl;
-  cout << endl;
-
-  s.push(-10);
-  s.push(-20);
-  s.push(-30);
-
-  cout << s.pop() << endl;
-  cout << s.pop() << endl;
-  cout << s.pop() << endl;
-  cout << s.pop() << endl;
+  cout << s.peek() << endl;
+  cout << (s.isEmpty() ? "true" : "false") << endl;
 
   return 0;
 }
