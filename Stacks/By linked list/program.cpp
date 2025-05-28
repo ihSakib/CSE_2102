@@ -10,7 +10,7 @@ public:
   Node(int val)
   {
     data = val;
-    next = NULL;
+    next = 0;
   }
 };
 
@@ -23,14 +23,14 @@ private:
 public:
   Stacks()
   {
-    head = NULL;
+    head = 0;
   }
 
   void push(int val)
   {
     Node *nn = new Node(val);
 
-    if (head == NULL)
+    if (head == 0)
     {
       head = nn;
       return;
@@ -61,7 +61,7 @@ public:
 
   bool isEmpty()
   {
-    return head == NULL;
+    return head == 0;
   }
 };
 
